@@ -46,7 +46,7 @@ PIA_PF_API_URL=http://209.222.18.222:2000/?client_id
 
 echo 'Requesting open port assignment from PIA ...'
 
-PIA_API_JSON_RESPONSE=`curl "${PIA_PF_API_URL}=${LM_ID}" -m ${CURL_TIMEOUT} 2> /dev/null`
+PIA_API_JSON_RESPONSE=$(curl -m $CURL_TIMEOUT --silent --interface $VPNINTERFACE "${PIA_PF_API_URL}=${LM_ID}")
 
 if [ "${PIA_API_JSON_RESPONSE}" == "" ]; then
   echo "Hmmm: did not get a port from PIA. Maybe ..."
